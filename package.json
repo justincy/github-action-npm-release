@@ -1,0 +1,24 @@
+{
+  "name": "github-action-npm-release",
+  "version": "1.0.0",
+  "description": "Automatically generate a release when the package.json version changes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justincy/github-action-npm-release.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justincy/github-action-npm-release/issues"
+  },
+  "homepage": "https://github.com/justincy/github-action-npm-release#readme",
+  "dependencies": {
+    "@actions/core": "1.2.4",
+    "@octokit/rest": "18.0.3"
+  }
+}

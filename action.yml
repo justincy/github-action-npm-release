@@ -1,0 +1,8 @@
+name: Automatic GitHub Release
+description: Automatic GitHub release when the package.json version changes
+branding:
+  color: blue
+  icon: archive
+runs:
+  using: 'node12'
+  main: 'main.js'

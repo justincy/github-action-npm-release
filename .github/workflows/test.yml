@@ -1,0 +1,14 @@
+name: Test
+on: [push]
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: npm i
+      - uses: ./
+        # env:
+        #   GITHUB_REPOSITORY: justincy/github-action-npm-release
