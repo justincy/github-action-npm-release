@@ -9,6 +9,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - run: npm i
+      - run: apt-get update && apt-get install -y git # Images used by nektos/act don't have git preinstalled
       - uses: ./
-        # env:
-        #   GITHUB_REPOSITORY: justincy/github-action-npm-release
