@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const {Octokit} = require('@octokit/rest');
-const {resolve} = require('path');
+const {join: pathJoin} = require('path');
 const {promisify} = require('util');
 const exec = promisify(require('child_process').exec);
 
@@ -14,7 +14,7 @@ async function main() {
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
 
   // 1. Get the current version
-  const {version: newVersion} = __non_webpack_require__(resolve(core.getInput('path'), 'package.json'));
+  const {version: newVersion} = __non_webpack_require__(pathJoin(core.getInput('path'), 'package.json'));
   core.info(`New version: ${newVersion}`);
 
   // 2. Get the latest release version and hash
