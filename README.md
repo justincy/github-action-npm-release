@@ -13,7 +13,10 @@ The release notes will contain a change log generated from git history in the fo
 
 ```
 name: Release
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
