@@ -20,4 +20,4 @@ jobs:
         id: release
       - name: Print output
         if: ${{ steps.release.outputs.released == 'true' }}
-        run: echo Release HTML url ${{ steps.release.outputs.released }}; ID ${{ steps.release.outputs.id }}; Tag ${{ steps.release.outputs.tag }}; Name ${{ steps.release.outputs.name }}
+        run: echo Release HTML url ${{ steps.release.outputs.html_url }} ID ${{ steps.release.outputs.id }} Tag ${{ steps.release.outputs.tag }} Name ${{ steps.release.outputs.name }}

@@ -9,6 +9,14 @@ The release notes will contain a change log generated from git history in the fo
 - 275e3e2 Initial commit
 ```
 
+## Assumptions
+
+This action makes a few assumptions:
+
+* `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git hustory.
+* You are only releasing from one branch
+* It is only used during `push`
+
 ## Usage Example
 
 ```
@@ -34,14 +42,6 @@ jobs:
         if: ${{ steps.release.outputs.released == 'true' }}
         run: echo Release ID ${{ steps.release.outputs.id }}
 ```
-
-## Assumptions
-
-This action makes a few assumptions:
-
-* `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git hustory.
-* You are only releasing from one branch
-* It is only used during `push`
 
 ## Inputs
 

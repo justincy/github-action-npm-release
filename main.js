@@ -56,7 +56,7 @@ async function main() {
     try {
       const {stdout, stderr} = await exec(`git log ${firstRelease ? '' : `${beginningSha}..HEAD`} --pretty=format:"- %h %s"`);
       changeLog = stdout.trim();
-      core.info(`Change Log:\n\n${changeLog}`);
+      core.info(`Change Log:\n${changeLog}`);
     } catch (error) {
       core.setFailed('Unable to generate the change log.');
       core.error(error);
