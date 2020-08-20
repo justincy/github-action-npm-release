@@ -1,4 +1,4 @@
-# github-action-npm-release
+# Automatic GitHub Release
 
 Automatically generate a release when the package.json version changes. The release name and tag will match the new version. If no releases yet exist, this action will create the first release.
 
