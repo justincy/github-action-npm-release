@@ -7,6 +7,7 @@ inputs:
   token:
     description: Personal access token. Defaults to ${{ secrets.GITHUB_TOKEN }}.
     default: ${{ secrets.GITHUB_TOKEN }}
+    required: false
 runs:
   using: 'node12'
   main: 'main.js'
