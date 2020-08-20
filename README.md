@@ -4,7 +4,7 @@ Automatically generate a release when the package.json version changes. The rele
 
 The release notes will contain a change log generated from git history in the following format:
 
-```
+```md
 - f0d91bd Making progress
 - 275e3e2 Initial commit
 ```
@@ -13,13 +13,13 @@ The release notes will contain a change log generated from git history in the fo
 
 This action makes a few assumptions:
 
-* `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git hustory.
-* You are only releasing from one branch
-* It is only used during `push`
+- `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git hustory.
+- You are only releasing from one branch
+- It is only used during `push`
 
 ## Usage Example
 
-```
+```yml
 name: Release
 on:
   push:
@@ -45,18 +45,18 @@ jobs:
 
 ## Inputs
 
-* `token`: optional; Personal access token for GitHub authentication. Defaults to `GITHUB_TOKEN`.
+- `token`: optional; Personal access token for GitHub authentication. Defaults to `GITHUB_TOKEN`.
 
 ## Outputs
 
-* `released`: Set to true when a release is created.
-* `html_url`: The URL for viewing the release in a browser.
-* `upload_url`: The URL for uploading assets to the release.
-* `release_id`: ID of the release.
-* `release_tag`: Tag of the release.
-* `release_name`: Name of the release.
+- `released`: Set to true when a release is created.
+- `html_url`: The URL for viewing the release in a browser.
+- `upload_url`: The URL for uploading assets to the release.
+- `release_id`: ID of the release.
+- `release_tag`: Tag of the release.
+- `release_name`: Name of the release.
 
 ## Possible future enhancements
 
-* Add options for draft and pre-release
-* Add option for custom git-log format
+- Add options for draft and pre-release
+- Add option for custom git-log format
