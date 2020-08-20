@@ -39,6 +39,13 @@ async function main() {
   // There are other releases
   else {
     // TODO: calculate the version of the latest release
+    // Should I try to checkout the code and pull the version from package.json?
+    // That's a lot of work. I think it's better to assume that the tag will contain the version.
+    // Assume that this lib is creating the versions and that tags are in the format we expect.
+    previousVersion = latestRelease.tag_name;
+    beginningSha = latestRelease.target_commitish;
+    core.info(`Previous release version: ${previousVersion}`);
+    core.info(`Previous release sha: ${beginningSha}`);
   }
 
   // 3. If versions are different or if its the first release

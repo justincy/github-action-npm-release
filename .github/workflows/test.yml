@@ -9,5 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - run: npm i
-      # - run: apt-get update && apt-get install -y git # Images used by nektos/act don't have git preinstalled
+      - name: Install git if missing # Containers used by nektos/act don't have git preinstalled
+        run: if ! which git &> /dev/null; then apt-get update && apt-get install -y git; fi; 
       - uses: ./
