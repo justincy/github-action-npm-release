@@ -5,7 +5,7 @@ const {promisify} = require('util');
 const exec = promisify(require('child_process').exec);
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN
+  auth: core.getInput('token')
 });
 
 async function main() {

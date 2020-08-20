@@ -3,6 +3,10 @@ description: Automatic GitHub release when the package.json version changes
 branding:
   color: blue
   icon: archive
+inputs:
+  token:
+    description: Personal access token. Defaults to ${{ github.token }}.
+    default: ${{ github.token }}
 runs:
   using: 'node12'
   main: 'main.js'
