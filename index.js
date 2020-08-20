@@ -38,14 +38,29 @@ async function main() {
 
   // There are other releases
   else {
-    // TODO: calculate the version of the latest release
     // Should I try to checkout the code and pull the version from package.json?
     // That's a lot of work. I think it's better to assume that the tag will contain the version.
     // Assume that this lib is creating the versions and that tags are in the format we expect.
     previousVersion = latestRelease.tag_name;
-    beginningSha = latestRelease.target_commitish;
     core.info(`Previous release version: ${previousVersion}`);
-    core.info(`Previous release sha: ${beginningSha}`);
+
+    // Ideally we could also get the sha from `target_commitish` on the release, but sometimes
+    // `target_commitish` is a branch name. That doens't work for us because the branch name
+    // would be master and calling `git log` with the range `master..HEAD` would give us nothing.
+    // To get a sha, we get the commit that the tag points to.
+    try {
+      const {data} = await octokit.repos.getCommit({
+        owner,
+        repo,
+        ref: previousVersion
+      });
+      beginningSha = data.sha;
+      core.info(`Previous release sha: ${beginningSha}`);
+    } catch (error) {
+      core.setFailed(`Unable to get the commit for tag ${previousVersion}.`);
+      core.error(error);
+      process.exit();
+    }
   }
 
   // 3. If versions are different or if its the first release
@@ -74,7 +89,7 @@ async function main() {
         body: changeLog
       });
       // What output should we provide?
-      // https://developer.github.com/v3/repos/releases/#response-4
+      // https://docs.github.com/en/rest/reference/repos#get-a-release
       core.info(`Created release ${newVersion}`);
       core.setOutput('released', true);
       core.setOutput('html_url', data.html_url);
