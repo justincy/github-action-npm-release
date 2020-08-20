@@ -4,6 +4,10 @@ branding:
   color: blue
   icon: archive
 inputs:
+  path:
+    description: Path of the package.json file that will be examined.
+    default: ${{ github.workspace }}
+    required: false
   token:
     description: Personal access token. Defaults to GITHUB_TOKEN.
     default: ${{ github.token }}
