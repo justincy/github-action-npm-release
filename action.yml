@@ -5,7 +5,7 @@ branding:
   icon: archive
 inputs:
   token:
-    description: Personal access token. Defaults to ${{ secrets.GITHUB_TOKEN }}.
+    description: Personal access token. Defaults to GITHUB_TOKEN.
     default: ${{ secrets.GITHUB_TOKEN }}
     required: false
 runs:
