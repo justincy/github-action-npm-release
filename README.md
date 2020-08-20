@@ -40,7 +40,7 @@ jobs:
         id: release
       - name: Print release output
         if: ${{ steps.release.outputs.released == 'true' }}
-        run: echo Release ID ${{ steps.release.outputs.id }}
+        run: echo Release ID ${{ steps.release.outputs.release_id }}
 ```
 
 ## Inputs
