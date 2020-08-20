@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - run: npm i
       - name: Install git if missing # Containers used by nektos/act don't have git preinstalled
         run: if ! which git &> /dev/null; then apt-get update && apt-get install -y git; fi; 
