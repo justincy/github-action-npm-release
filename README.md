@@ -58,7 +58,5 @@ jobs:
 
 ## Possible future enhancements
 
-* Add output indicating whether a release was created
-* Add outputs with metadata from the release
 * Add options for draft and pre-release
 * Add option for custom git-log format
