@@ -13,7 +13,7 @@ The release notes will contain a change log generated from git history in the fo
 
 This action makes a few assumptions:
 
-- `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git hustory.
+- `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git history.
 - You are only releasing from one branch
 - It is only used during `push`
 
