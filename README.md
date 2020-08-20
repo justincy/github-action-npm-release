@@ -45,8 +45,8 @@ jobs:
 
 ## Inputs
 
-- `token`: optional; Personal access token for GitHub authentication. Defaults to `${{ github.token }}`.
-- `path`: options; Path of the package.json file that will be examined. Defaults to `${{ github.workspace }}`.
+- `token`: Personal access token for GitHub authentication. Optional. Defaults to `${{ github.token }}`.
+- `path`: Path of the package.json file that will be examined. Optional. Defaults to `${{ github.workspace }}`.
 
 ## Outputs
 
