@@ -4,7 +4,7 @@
   "description": "Automatically generate a release when the package.json version changes",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm i && ncc build main.js --minify --out lib",
+    "build": "npm i && ncc build index.js --minify --out lib -e ./package.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

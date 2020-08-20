@@ -14,7 +14,7 @@ async function main() {
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
 
   // 1. Get the current version
-  const {version: newVersion} = require(resolve('./package.json'));
+  const {version: newVersion} = __non_webpack_require__(resolve('./package.json'));
   core.info(`New version: ${newVersion}`);
 
   // 2. Get the latest release version and hash
