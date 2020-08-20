@@ -1,6 +1,6 @@
 {
   "name": "github-action-npm-release",
-  "version": "1.3.3",
+  "version": "2.0.0",
   "description": "Automatically generate a release when the package.json version changes",
   "main": "lib/index.js",
   "scripts": {
