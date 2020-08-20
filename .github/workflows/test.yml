@@ -17,3 +17,7 @@ jobs:
       - name: Install git if missing # Containers used by nektos/act don't have git preinstalled
         run: if ! which git &> /dev/null; then apt-get update && apt-get install -y git; fi; 
       - uses: ./
+        id: release
+      - name: Print output
+        if: ${{ steps.release.outputs.released == 'true' }}
+        run: echo Release HTML url ${{ steps.release.outputs.released }}; ID ${{ steps.release.outputs.id }}; Tag ${{ steps.release.outputs.tag }}; Name ${{ steps.release.outputs.name }}

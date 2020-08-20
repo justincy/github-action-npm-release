@@ -75,12 +75,19 @@ async function main() {
       });
       // What output should we provide?
       // https://developer.github.com/v3/repos/releases/#response-4
-      core.info(`Created release ${newVersion}`)
+      core.info(`Created release ${newVersion}`);
+      core.setOutput('released', true);
+      core.setOutput('html_url', data.html_url);
+      core.setOutput('upload_url', data.upload_url);
+      core.setOutput('release_id', data.id);
+      core.setOutput('release_tag', data.tag_name);
+      core.setOutput('release_name', data.name);
     } catch (error) {
       core.setFailed(`Failed to create release ${newVersion} for ${owner}/${repo}#${process.env.GITHUB_SHA}`);
       core.error(error);
-      core.info(JSON.stringify(error.headers));
-      core.info(JSON.stringify(error.request));
+      core.setOutput('released', true);
+      core.debug(JSON.stringify(error.headers));
+      core.debug(JSON.stringify(error.request));
       process.exit();
     }
   }

@@ -29,6 +29,10 @@ jobs:
           fetch-depth: 0
       - name: Release
         uses: justincy/github-action-npm-release@v1.2.0
+        id: release
+      - name: Print release output
+        if: ${{ steps.release.outputs.released == 'true' }}
+        run: echo Release ID ${{ steps.release.outputs.id }}
 ```
 
 ## Assumptions
@@ -38,6 +42,19 @@ This action makes a few assumptions:
 * `actions/checkout@v2` with `fetch-depth: 0` is used before this action runs. That allows this action to have all the information it needs to generate the change log from the git hustory.
 * You are only releasing from one branch
 * It is only used during `push`
+
+## Inputs
+
+* `token`: optional; Personal access token for GitHub authentication. Defaults to `GITHUB_TOKEN`.
+
+## Outputs
+
+* `released`: Set to true when a release is created.
+* `html_url`: The URL for viewing the release in a browser.
+* `upload_url`: The URL for uploading assets to the release.
+* `release_id`: ID of the release.
+* `release_tag`: Tag of the release.
+* `release_name`: Name of the release.
 
 ## Possible future enhancements
 

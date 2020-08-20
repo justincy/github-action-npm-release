@@ -8,6 +8,19 @@ inputs:
     description: Personal access token. Defaults to GITHUB_TOKEN.
     default: ${{ github.token }}
     required: false
+outputs:
+  released:
+    description: 'Set to true when a release is created.'
+  html_url:
+    description: 'The URL for viewing the release in a browser.'
+  upload_url:
+    description: 'The URL for uploading assets to the release.'
+  release_id:
+    description: 'ID of the release.'
+  release_tag:
+    description: 'Tag of the release.'
+  release_name:
+    description: 'Name of the release.'
 runs:
   using: 'node12'
   main: 'main.js'
