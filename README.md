@@ -89,6 +89,14 @@ jobs:
 - `release_tag`: Tag of the release.
 - `release_name`: Name of the release.
 
+## Why re-invent the wheel?
+
+- [Publish to npm](https://github.com/marketplace/actions/publish-to-npm)
+    - I don't want to be tied to any specific commit format convention. I only want a new `version` to be the signal to release.
+- [Version Check](https://github.com/marketplace/actions/version-check)
+    - It only checks commits in a single push. If the workflow run associated with the push that has the new version fails and you push again to fix it, then the second workflow run isn't associated with the commits where the version changed and therefore it doesn't detect that the version changed.
+- I wanted to learn more about GitHub actions.
+
 ## Possible future enhancements
 
 - Add options for draft and pre-release
