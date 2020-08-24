@@ -43,6 +43,38 @@ jobs:
         run: echo Release ID ${{ steps.release.outputs.release_id }}
 ```
 
+Works great in tandem with auto-publishing. Here's an example for the GitHub Package Registry:
+
+```yml
+name: Release
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Automatic GitHub Release
+        uses: justincy/github-action-npm-release@2.0.1
+        id: release
+      - uses: actions/setup-node@v1
+        if: steps.release.outputs.released == 'true'
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Publish
+        if: steps.release.outputs.released == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
 ## Inputs
 
 - `token`: Personal access token for GitHub authentication. Optional. Defaults to `${{ github.token }}`.
