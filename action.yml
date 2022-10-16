@@ -26,5 +26,5 @@ outputs:
   release_name:
     description: 'Name of the release.'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'lib/index.js'
