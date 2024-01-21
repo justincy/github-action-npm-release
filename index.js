@@ -101,7 +101,7 @@ async function main() {
       core.setFailed(`Failed to create release ${newVersion} for ${owner}/${repo}#${process.env.GITHUB_SHA}`);
       core.error(error);
       core.setOutput('released', true);
-      core.debug(JSON.stringify(error.headers));
+      core.debug(JSON.stringify(error.response.headers));
       core.debug(JSON.stringify(error.request));
       process.exit();
     }
