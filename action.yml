@@ -8,9 +8,17 @@ inputs:
     description: Path of the package.json file that will be examined.
     default: ${{ github.workspace }}
     required: false
+  apiUrl:
+    description: The URL of the Git(Hub) REST API. Defaults to GITHUB_API_URL
+    default: ${{ github.api_url }}
+    required: false
   token:
     description: Personal access token. Defaults to GITHUB_TOKEN.
     default: ${{ github.token }}
+    required: false
+  messageFormat:
+    description: Commit message format (https://devhints.io/git-log-format)
+    default: '%h %s'
     required: false
 outputs:
   released:

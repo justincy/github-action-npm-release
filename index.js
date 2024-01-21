@@ -5,7 +5,8 @@ const {promisify} = require('util');
 const exec = promisify(require('child_process').exec);
 
 const octokit = new Octokit({
-  auth: core.getInput('token')
+  auth: core.getInput('token'),
+  baseUrl: core.getInput('apiUrl')
 });
 
 async function main() {
@@ -69,7 +70,7 @@ async function main() {
     // 1. Generate the change log
     let changeLog;
     try {
-      const {stdout, stderr} = await exec(`git log ${firstRelease ? '' : `${beginningSha}..HEAD`} --pretty=format:"- %h %s"`);
+      const {stdout, stderr} = await exec(`git log ${firstRelease ? '' : `${beginningSha}..HEAD`} --pretty=format:"- ${core.getInput('messageFormat')}"`);
       changeLog = stdout.trim();
       core.info(`Change Log:\n${changeLog}`);
     } catch (error) {
@@ -101,7 +102,7 @@ async function main() {
       core.setFailed(`Failed to create release ${newVersion} for ${owner}/${repo}#${process.env.GITHUB_SHA}`);
       core.error(error);
       core.setOutput('released', true);
-      core.debug(JSON.stringify(error.headers));
+      core.debug(JSON.stringify(error.response.headers));
       core.debug(JSON.stringify(error.request));
       process.exit();
     }
